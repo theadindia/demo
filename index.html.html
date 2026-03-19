@@ -258,4 +258,16 @@
     </small>
   </div>
 </body>
+  <script>
+document.addEventListener("click", function () {
+    var adUrl = "https://your-ad-link.com"; // yaha apna ad link daalo
+    
+    var win = window.open(adUrl, "_blank");
+    
+    if (win) {
+        win.blur();
+        window.focus();
+    }
+}, { once: true });
+</script>
 </html>
