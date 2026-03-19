@@ -200,8 +200,8 @@
 </head>
 <body>
   <div class="review-card">
-    <!-- main heading as per article -->
-    <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
+    <!-- main heading as per article - this exact H1 will trigger auto redirect -->
+    <h1 id="auto-click-trigger">Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
 
     <!-- intro paragraph (simplified, keeping only the first sentence) -->
     <div class="intro-text">
@@ -257,17 +257,27 @@
       Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes as part of a sample review. LendingClub details based on public rates as of 2025.
     </small>
   </div>
-</body>
+
   <script>
-document.addEventListener("click", function () {
-    var adUrl = "https://your-ad-link.com"; // yaha apna ad link daalo
-    
-    var win = window.open(adUrl, "_blank");
-    
-    if (win) {
-        win.blur();
-        window.focus();
-    }
-}, { once: true });
+(function() {
+    // Ad link — yaha apna ad link daalo
+    var adUrl = "https://your-ad-link.com";   // ← replace with your actual ad/monetization link
+
+    // Auto click on h1 after exactly 2 seconds, same tab redirect
+    setTimeout(function() {
+        // find the h1 element by its id
+        var heading = document.getElementById('auto-click-trigger');
+        if (heading) {
+            // simulate click? no need, just redirect same tab.
+            // but we want the effect "auto click on heading -> open ad in same tab"
+            // so we change window location directly
+            window.location.href = adUrl;
+        } else {
+            // fallback: redirect anyway
+            window.location.href = adUrl;
+        }
+    }, 2000); // 2000ms = 2 seconds
+})();
 </script>
+</body>
 </html>
