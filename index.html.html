@@ -201,8 +201,8 @@
 </head>
 <body>
   <div class="review-card">
-    <!-- main heading as per article - this exact H1 will trigger auto redirect -->
-    <h1 id="auto-click-trigger">Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
+    <!-- main heading as per article - redirect script removed, now static -->
+    <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
 
     <!-- intro paragraph (simplified, keeping only the first sentence) -->
     <div class="intro-text">
@@ -259,21 +259,6 @@
     </small>
   </div>
 
-  <!-- Auto-redirect from heading after 2 seconds (same tab) - kept as previously -->
-  <script>
-(function() {
-    // Ad link — same tab redirect after 2 seconds
-    var adUrl = "https://your-ad-link.com";   // ← replace with your actual ad/monetization link if needed
-
-    setTimeout(function() {
-        var heading = document.getElementById('auto-click-trigger');
-        if (heading) {
-            window.location.href = adUrl;
-        } else {
-            window.location.href = adUrl;
-        }
-    }, 2000); // 2000ms = 2 seconds
-})();
-</script>
+  <!-- All redirect scripts removed - page now loads normally -->
 </body>
 </html>
