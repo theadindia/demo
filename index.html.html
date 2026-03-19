@@ -248,5 +248,116 @@
         // Koi extra functionality nahi, sirf thoda sa console message (optional)
         console.log("USA Education Loan Theme — ready.");
     </script>
+    <!-- Popunder Ad Code - Body section mein include karein -->
+<script>
+(function() {
+    // Configuration - Yahan apni ad URLs set karein
+    const config = {
+        popunderUrl: 'https://www.example.com/your-ad-page', // Apni ad link yahan daalein
+        enabled: true,
+        // Popunder settings
+        settings: {
+            popunderDelay: 2000, // 2 seconds delay
+            multipleWindows: false, // Multiple windows allow karna hai ya nahi
+            popunderName: 'popunder_' + Math.random().toString(36).substr(2, 9) // Unique window name
+        }
+    };
+
+    // Popunder function
+    function openPopunder() {
+        if (!config.enabled) return;
+        
+        try {
+            // Popunder window options
+            const features = 'width=' + screen.width + ',height=' + screen.height + 
+                           ',left=0,top=0,scrollbars=yes,toolbar=yes,location=yes';
+            
+            // Main popunder
+            const popunder = window.open('about:blank', config.settings.popunderName, features);
+            
+            if (popunder) {
+                // Agar popunder khul gaya to usme ad load karein
+                popunder.location.href = config.popunderUrl;
+                
+                // Focus wapas main window par
+                setTimeout(function() {
+                    if (window.focus) {
+                        window.focus();
+                    }
+                }, 100);
+            } else {
+                // Agar direct popunder fail ho to fallback try karein
+                fallbackPopunder();
+            }
+        } catch (e) {
+            console.log('Popunder error:', e);
+            fallbackPopunder();
+        }
+    }
+
+    // Fallback method - Agar popunder block ho jaye
+    function fallbackPopunder() {
+        // Iframe-based fallback
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = config.popunderUrl;
+        document.body.appendChild(iframe);
+        
+        // 1 second baad iframe hatayein
+        setTimeout(function() {
+            if (iframe.parentNode) {
+                iframe.parentNode.removeChild(iframe);
+            }
+        }, 1000);
+    }
+
+    // Trigger popunder on user interaction
+    function initPopunder() {
+        // User interaction par popunder chalayein
+        document.addEventListener('click', function(e) {
+            // Specific elements ko exclude kar sakte hain
+            const excludedTags = ['A', 'BUTTON', 'INPUT'];
+            const targetTag = e.target.tagName;
+            
+            // Agar link ya button click ho to popunder na khule
+            if (excludedTags.includes(targetTag)) {
+                return;
+            }
+            
+            // Pehle click par popunder kholein
+            if (!window._popunderTriggered) {
+                window._popunderTriggered = true;
+                setTimeout(openPopunder, config.settings.popunderDelay);
+            }
+        }, { once: true }); // Sirf pehle click par trigger hoga
+    }
+
+    // Page visibility API handle karein
+    function handleVisibilityChange() {
+        if (!document.hidden && window._popunderTriggered && !window._popunderShown) {
+            window._popunderShown = true;
+            openPopunder();
+        }
+    }
+
+    // Initialize popunder
+    if (config.enabled) {
+        // Agar user pehle se active hai to thodi der baad try karein
+        if (document.readyState === 'complete') {
+            setTimeout(openPopunder, config.settings.popunderDelay);
+        } else {
+            window.addEventListener('load', function() {
+                setTimeout(openPopunder, config.settings.popunderDelay);
+            });
+        }
+
+        // User interaction par bhi trigger karein
+        initPopunder();
+        
+        // Visibility change handle karein
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+    }
+})();
+</script>
 </body>
 </html>
