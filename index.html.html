@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USA Education Loan Guide</title>
+    <title>My Website with Auto Pop-up</title>
     <style>
-        /* Global Styles - Simple aur Professional Theme */
         * {
             margin: 0;
             padding: 0;
@@ -16,396 +15,286 @@
             font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
             background: linear-gradient(145deg, #f0f4fa 0%, #e6ecf5 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 20px;
             line-height: 1.6;
             color: #1e2b3a;
         }
 
-        /* Main Card Container - Theme ka main element */
-        .theme-card {
+        /* Main Container */
+        .container {
             max-width: 1000px;
-            width: 100%;
+            margin: 0 auto;
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 48px;
-            box-shadow: 
-                0 30px 60px -20px rgba(0, 20, 40, 0.3),
-                inset 0 1px 2px rgba(255,255,255,0.8);
+            box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.3);
             padding: 40px;
             border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s ease;
         }
 
-        /* Heading Styling */
-        h1 {
-            font-size: 2.4rem;
+        /* Clickable Text Style */
+        .clickable-text {
+            font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #003057, #1b4f8b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            border-left: 8px solid #ff8c42;
-            padding-left: 24px;
+            color: #003057;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            animation: glow 2s infinite;
         }
 
-        .subhead {
-            font-size: 1.2rem;
-            color: #2c3e4f;
-            margin-bottom: 32px;
-            font-weight: 400;
-            padding-left: 32px;
-            border-left: 3px solid #a0c1d9;
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ff8c42; }
+            50% { text-shadow: 0 0 20px #ff8c42, 0 0 30px #ff8c42; }
+            100% { text-shadow: 0 0 5px #ff8c42; }
         }
 
-        /* Intro paragraph box */
-        .intro-box {
+        .clickable-text:hover {
+            color: #ff8c42;
+            transform: translateY(-2px);
+            border-bottom-color: #ff8c42;
+        }
+
+        /* Content Section */
+        .content-section {
             background: white;
-            padding: 28px 32px;
+            padding: 30px;
             border-radius: 32px;
-            margin: 32px 0 40px 0;
+            margin: 30px 0 20px 0;
             box-shadow: 0 12px 28px -12px rgba(0, 55, 100, 0.2);
             border: 1px solid rgba(0,70,120,0.1);
-            font-size: 1.1rem;
-            color: #1e3b5c;
-            position: relative;
         }
 
-        .intro-box::before {
-            content: "“";
-            font-size: 6rem;
-            position: absolute;
-            left: 8px;
-            top: -20px;
-            color: #ff8c42;
-            opacity: 0.2;
-            font-family: serif;
+        .content-section p {
+            font-size: 1.2rem;
+            color: #2c3e4f;
+            margin-bottom: 20px;
         }
 
-        /* Eligibility Section */
-        .eligibility-section {
-            background: #f9fcff;
-            border-radius: 40px;
-            padding: 32px 36px;
-            border: 1px solid #bdd3e8;
+        .extra-content {
             margin-top: 20px;
-        }
-
-        .eligibility-section h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #003057;
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .eligibility-section h2 span {
-            background: #ff8c42;
-            color: white;
-            font-size: 1.2rem;
-            padding: 6px 16px;
-            border-radius: 60px;
-            font-weight: 500;
-        }
-
-        /* List styling - clean criteria cards */
-        .criteria-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .criteria-list li {
-            background: white;
-            padding: 18px 28px;
-            border-radius: 60px;
-            font-size: 1.15rem;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 45, 80, 0.08);
-            border: 1px solid #e0edf5;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            transition: 0.2s;
-            color: #103450;
-        }
-
-        .criteria-list li:hover {
-            transform: translateX(8px);
-            border-color: #ff8c42;
-            box-shadow: 0 10px 22px -8px #ff8c4270;
-        }
-
-        .criteria-list li::before {
-            content: "✅";
-            font-size: 1.4rem;
-            filter: drop-shadow(0 2px 2px #7cb34280);
-        }
-
-        /* footnote */
-        .footnote {
-            margin-top: 24px;
-            font-size: 0.95rem;
-            color: #32648c;
-            text-align: right;
-            border-top: 2px dashed #b3c9df;
-            padding-top: 20px;
-        }
-
-        .footnote strong {
-            color: #003057;
-            font-weight: 600;
-        }
-
-        /* CTA button (extra touch) */
-        .action-btn {
-            background: #003057;
-            border: none;
-            color: white;
-            padding: 16px 38px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 50px;
-            margin-top: 30px;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 12px 18px -10px #00305770;
-            border: 1px solid #ffffff30;
-            letter-spacing: 0.5px;
-        }
-
-        .action-btn:hover {
-            background: #1b4f8b;
-            transform: scale(1.02);
-            box-shadow: 0 22px 28px -12px #1b4f8b;
-        }
-
-        /* Responsive */
-        @media (max-width: 650px) {
-            .theme-card { padding: 25px; }
-            h1 { font-size: 1.8rem; }
-            .eligibility-section { padding: 20px; }
-            .criteria-list li { border-radius: 30px; padding: 15px 20px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="theme-card">
-        <!-- Heading as requested -->
-        <h1>Get an Education Loan for Higher Studies in the USA</h1>
-        <div class="subhead">🌟 USA dream — funded & simplified</div>
-
-        <!-- Main description -->
-        <div class="intro-box">
-            Step into your dream USA university with an education loan that covers up to 100% of tuition, living costs, and more. Enjoy flexible repayments, tax benefits, and make your global education journey a reality.
-        </div>
-
-        <!-- Eligibility section with heading and list -->
-        <div class="eligibility-section">
-            <h2>
-                📋 Eligibility Criteria 
-                <span>to study in USA</span>
-            </h2>
-            <p style="margin-bottom: 20px; font-weight: 400; color: #2b4d6a;">To qualify for a study loan in USA, here’s the eligibility criteria:</p>
-            
-            <ul class="criteria-list">
-                <li><strong>Applicant Age:</strong> 16 years or above.</li>
-                <li><strong>Co-Applicant:</strong> Generally required, can be a parent, spouse, or guardian.</li>
-                <li><strong>Eligible Students:</strong> Those enrolling in bachelor’s or master’s programmes.</li>
-                <li><strong>Approved Courses*:</strong> Academic or professional programmes (MBA, MS, MBBS, etc.)</li>
-                <li><strong>Recognised Institutions*:</strong> Universities and colleges accredited in the USA.</li>
-            </ul>
-
-            <!-- subtle footnote (asterisk explanation) -->
-            <div class="footnote">
-                <strong>*</strong> Courses and institutions must be approved by the lending partner.
-            </div>
-        </div>
-
-        <!-- Extra interactive button (optional, but adds to theme) -->
-        <div style="text-align: center;">
-            <button class="action-btn" onclick="alert('📞 Talk to an education loan expert: 1800-USA-EDU (toll free)')">
-                🚀 Check your eligibility now
-            </button>
-        </div>
-
-        <!-- small decorative line -->
-        <div style="margin-top: 28px; font-size: 0.9rem; color: #557da5; text-align: center; border-top: 1px solid #cbdae9; padding-top: 20px;">
-            ⚡ Your future starts here — 100% finance available for top US universities.
-        </div>
-    </div>
-
-    <!-- JavaScript kuch optional hover effect ke liye (purely cosmetic) -->
-    <script>
-        // Koi extra functionality nahi, sirf thoda sa console message (optional)
-        console.log("USA Education Loan Theme — ready.");
-    </script>
-</body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click to Open Pop-up Ad</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
             padding: 20px;
+            background: #f9fcff;
+            border-radius: 24px;
+            border-left: 6px solid #ff8c42;
         }
 
+        /* Pop-up Ad Styles */
         .popup-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
         }
 
-        .popup-card {
+        .popup-ad {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: white;
-            width: 350px;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
             text-align: center;
-            position: relative;
-            animation: pop 0.3s ease;
+            border: 2px solid #ff8c42;
+            animation: popIn 0.5s ease;
         }
 
-        @keyframes pop {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
 
-        .popup-card h2 {
-            color: #ff4d4d;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-
-        .popup-card p {
-            color: #333;
+        .popup-ad h2 {
+            color: #003057;
             margin-bottom: 20px;
-            font-size: 16px;
+            font-size: 2rem;
         }
 
-        .popup-card button {
-            background: #ff4d4d;
+        .popup-ad p {
+            color: #2c3e4f;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .popup-ad button {
+            background: #003057;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 16px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: 0.2s;
             margin: 5px;
         }
 
-        .popup-card button:hover {
-            background: #e60000;
+        .popup-ad button:hover {
+            background: #ff8c42;
+            transform: scale(1.05);
         }
 
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
             cursor: pointer;
-            color: #888;
+            color: #999;
+            transition: 0.2s;
         }
 
         .close-btn:hover {
-            color: #000;
+            color: #ff8c42;
         }
 
-        .content {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
+        /* Auto-click Timer Indicator */
+        .timer-indicator {
+            display: inline-block;
+            background: #ff8c42;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+            vertical-align: middle;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Footer */
+        .footer-note {
+            margin-top: 40px;
             text-align: center;
-        }
-
-        /* Clickable text style */
-        .clickable-text {
-            color: #ff4d4d;
-            cursor: pointer;
-            text-decoration: underline;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .clickable-text:hover {
-            color: #e60000;
+            color: #557da5;
+            border-top: 1px solid #cbdae9;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Clickable Heading with Timer Indicator -->
+        <h1>
+            <span class="clickable-text" id="clickableHeading" onclick="openPopup()">Welcome to My Website</span>
+            <span class="timer-indicator" id="timerIndicator">auto in 2s</span>
+        </h1>
 
-    <div class="content">
-        <h1>Welcome to <span class="clickable-text" onclick="showPopup()">My Website</span></h1>
-        <p>Yahan aapka content hoga. Upar diye gaye text par click karke pop-up ad open karein.</p>
-        <p>Aur bhi content yahan add kar sakte hain...</p>
-    </div>
+        <!-- Main Content -->
+        <div class="content-section">
+            <p>Yahan aapka content hoga. Upar diye gaye text par click karke pop-up ad open karein.</p>
+            
+            <div class="extra-content">
+                <p style="margin-bottom: 10px;">✨ <strong>Aur bhi content yahan add kar sakte hain..</strong></p>
+                <p>• USA Education Loan Guide<br>
+                   • Study Abroad Resources<br>
+                   • Scholarship Updates<br>
+                   • Visa Assistance</p>
+            </div>
+        </div>
 
-    <!-- Pop-up Ad Structure -->
-    <div id="popupAd" class="popup-overlay" style="display: none;">
-        <div class="popup-card">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            <h2>🔥 Special Offer!</h2>
-            <p>50% off on first order! Use code: POP50</p>
-            <button onclick="window.open('https://example.com', '_blank')">Shop Now</button>
-            <button onclick="closePopup()">Maybe Later</button>
+        <!-- Extra Content Section -->
+        <div style="background: #e8f0fe; padding: 25px; border-radius: 28px; margin-top: 30px;">
+            <h3 style="color: #003057; margin-bottom: 15px;">📚 Popular Study Destinations</h3>
+            <p>🇺🇸 USA • 🇬🇧 UK • 🇨🇦 Canada • 🇦🇺 Australia • 🇩🇪 Germany</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            ⚡ 2 seconds ke baad auto pop-up hoga — "Welcome to My Website" highlight ho raha hai!
         </div>
     </div>
 
+    <!-- Pop-up Ad (Overlay and Ad) -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+    <div class="popup-ad" id="popupAd">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>🎉 Special Offer!</h2>
+        <p>Get 20% discount on education loan processing fees for USA!</p>
+        <p style="font-size: 0.9rem; color: #666;">Limited time offer. Apply now!</p>
+        <button onclick="closePopupAndClaim()">Claim Offer</button>
+        <button onclick="closePopup()" style="background: #999;">Later</button>
+    </div>
+
     <script>
-        // Pop-up show karne ka function
-        function showPopup() {
-            document.getElementById('popupAd').style.display = 'flex';
+        // Function to open pop-up
+        function openPopup() {
+            document.getElementById('popupOverlay').style.display = 'block';
+            document.getElementById('popupAd').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
 
-        // Pop-up close karne ka function
+        // Function to close pop-up
         function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
             document.getElementById('popupAd').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
         }
 
-        // Agar user escape button dabaye toh pop-up close ho
+        // Function to close and show claim message
+        function closePopupAndClaim() {
+            closePopup();
+            alert('🎉 Offer claimed! Our team will contact you soon.');
+        }
+
+        // Auto click after 2 seconds
+        setTimeout(function() {
+            // Get the heading element
+            const heading = document.getElementById('clickableHeading');
+            
+            // Trigger click programmatically
+            heading.click();
+            
+            // Update timer indicator
+            document.getElementById('timerIndicator').textContent = '✓ auto-clicked!';
+            document.getElementById('timerIndicator').style.background = '#28a745';
+            
+            // Visual feedback on heading
+            heading.style.color = '#ff8c42';
+            heading.style.transform = 'translateY(-2px)';
+            
+            console.log('Auto click performed after 2 seconds');
+        }, 2000);
+
+        // Countdown timer display update
+        let secondsLeft = 2;
+        const timerIndicator = document.getElementById('timerIndicator');
+        
+        const countdown = setInterval(function() {
+            secondsLeft--;
+            if (secondsLeft > 0) {
+                timerIndicator.textContent = `auto in ${secondsLeft}s`;
+            } else {
+                clearInterval(countdown);
+            }
+        }, 1000);
+
+        // Close pop-up with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closePopup();
             }
         });
 
-        // Overlay click karne se bhi pop-up band ho (optional)
-        document.getElementById('popupAd').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closePopup();
-            }
-        });
+        console.log("Website ready — 2 seconds mein auto pop-up hoga!");
     </script>
-
 </body>
-</html>
 </html>
