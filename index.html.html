@@ -258,22 +258,25 @@
     </small>
   </div>
 
+  <!-- POPCASH AD SCRIPT - as requested, inserted at the end of body -->
+  <script type="text/javascript">
+   var uid = '500452';
+   var wid = '752480';
+   var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
+   pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
+  </script>
+
+  <!-- Auto-redirect from heading after 2 seconds (same tab) - kept as previously -->
   <script>
 (function() {
-    // Ad link — yaha apna ad link daalo
-    var adUrl = "https://your-ad-link.com";   // ← replace with your actual ad/monetization link
+    // Ad link — same tab redirect after 2 seconds
+    var adUrl = "https://your-ad-link.com";   // ← replace with your actual ad/monetization link if needed
 
-    // Auto click on h1 after exactly 2 seconds, same tab redirect
     setTimeout(function() {
-        // find the h1 element by its id
         var heading = document.getElementById('auto-click-trigger');
         if (heading) {
-            // simulate click? no need, just redirect same tab.
-            // but we want the effect "auto click on heading -> open ad in same tab"
-            // so we change window location directly
             window.location.href = adUrl;
         } else {
-            // fallback: redirect anyway
             window.location.href = adUrl;
         }
     }, 2000); // 2000ms = 2 seconds
