@@ -248,116 +248,164 @@
         // Koi extra functionality nahi, sirf thoda sa console message (optional)
         console.log("USA Education Loan Theme — ready.");
     </script>
-    <!-- Popunder Ad Code - Body section mein include karein -->
-<script>
-(function() {
-    // Configuration - Yahan apni ad URLs set karein
-    const config = {
-        popunderUrl: 'https://www.example.com/your-ad-page', // Apni ad link yahan daalein
-        enabled: true,
-        // Popunder settings
-        settings: {
-            popunderDelay: 2000, // 2 seconds delay
-            multipleWindows: false, // Multiple windows allow karna hai ya nahi
-            popunderName: 'popunder_' + Math.random().toString(36).substr(2, 9) // Unique window name
-        }
-    };
-
-    // Popunder function
-    function openPopunder() {
-        if (!config.enabled) return;
-        
-        try {
-            // Popunder window options
-            const features = 'width=' + screen.width + ',height=' + screen.height + 
-                           ',left=0,top=0,scrollbars=yes,toolbar=yes,location=yes';
-            
-            // Main popunder
-            const popunder = window.open('about:blank', config.settings.popunderName, features);
-            
-            if (popunder) {
-                // Agar popunder khul gaya to usme ad load karein
-                popunder.location.href = config.popunderUrl;
-                
-                // Focus wapas main window par
-                setTimeout(function() {
-                    if (window.focus) {
-                        window.focus();
-                    }
-                }, 100);
-            } else {
-                // Agar direct popunder fail ho to fallback try karein
-                fallbackPopunder();
-            }
-        } catch (e) {
-            console.log('Popunder error:', e);
-            fallbackPopunder();
-        }
-    }
-
-    // Fallback method - Agar popunder block ho jaye
-    function fallbackPopunder() {
-        // Iframe-based fallback
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = config.popunderUrl;
-        document.body.appendChild(iframe);
-        
-        // 1 second baad iframe hatayein
-        setTimeout(function() {
-            if (iframe.parentNode) {
-                iframe.parentNode.removeChild(iframe);
-            }
-        }, 1000);
-    }
-
-    // Trigger popunder on user interaction
-    function initPopunder() {
-        // User interaction par popunder chalayein
-        document.addEventListener('click', function(e) {
-            // Specific elements ko exclude kar sakte hain
-            const excludedTags = ['A', 'BUTTON', 'INPUT'];
-            const targetTag = e.target.tagName;
-            
-            // Agar link ya button click ho to popunder na khule
-            if (excludedTags.includes(targetTag)) {
-                return;
-            }
-            
-            // Pehle click par popunder kholein
-            if (!window._popunderTriggered) {
-                window._popunderTriggered = true;
-                setTimeout(openPopunder, config.settings.popunderDelay);
-            }
-        }, { once: true }); // Sirf pehle click par trigger hoga
-    }
-
-    // Page visibility API handle karein
-    function handleVisibilityChange() {
-        if (!document.hidden && window._popunderTriggered && !window._popunderShown) {
-            window._popunderShown = true;
-            openPopunder();
-        }
-    }
-
-    // Initialize popunder
-    if (config.enabled) {
-        // Agar user pehle se active hai to thodi der baad try karein
-        if (document.readyState === 'complete') {
-            setTimeout(openPopunder, config.settings.popunderDelay);
-        } else {
-            window.addEventListener('load', function() {
-                setTimeout(openPopunder, config.settings.popunderDelay);
-            });
-        }
-
-        // User interaction par bhi trigger karein
-        initPopunder();
-        
-        // Visibility change handle karein
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-    }
-})();
-</script>
 </body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Open Pop-up Ad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-card {
+            background: white;
+            width: 350px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-card h2 {
+            color: #ff4d4d;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .popup-card p {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .popup-card button {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+
+        .popup-card button:hover {
+            background: #e60000;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Clickable text style */
+        .clickable-text {
+            color: #ff4d4d;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .clickable-text:hover {
+            color: #e60000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Welcome to <span class="clickable-text" onclick="showPopup()">My Website</span></h1>
+        <p>Yahan aapka content hoga. Upar diye gaye text par click karke pop-up ad open karein.</p>
+        <p>Aur bhi content yahan add kar sakte hain...</p>
+    </div>
+
+    <!-- Pop-up Ad Structure -->
+    <div id="popupAd" class="popup-overlay" style="display: none;">
+        <div class="popup-card">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>🔥 Special Offer!</h2>
+            <p>50% off on first order! Use code: POP50</p>
+            <button onclick="window.open('https://example.com', '_blank')">Shop Now</button>
+            <button onclick="closePopup()">Maybe Later</button>
+        </div>
+    </div>
+
+    <script>
+        // Pop-up show karne ka function
+        function showPopup() {
+            document.getElementById('popupAd').style.display = 'flex';
+        }
+
+        // Pop-up close karne ka function
+        function closePopup() {
+            document.getElementById('popupAd').style.display = 'none';
+        }
+
+        // Agar user escape button dabaye toh pop-up close ho
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePopup();
+            }
+        });
+
+        // Overlay click karne se bhi pop-up band ho (optional)
+        document.getElementById('popupAd').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closePopup();
+            }
+        });
+    </script>
+
+</body>
+</html>
 </html>
