@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <div data-mndbanid="6a5e3ffe-a2b1-4265-b752-e959b58039c3"></div>
-  <script async src="https://ss.mrmnd.com/banner.js"></script>
   <meta name="mnd-ver" content="xzovhfbt4emvyborknfow" />
   <meta name="ppck-ver" content="ae99640df17126731a19fe9bd7ae1dde" />
   <meta charset="UTF-8">
@@ -25,6 +23,18 @@
       align-items: center;
       justify-content: center;
       padding: 2rem 1.5rem;
+    }
+
+    /* Ad container - यह नया स्टाइल है */
+    .ad-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto 2rem auto; /* यह इसे सेंटर करेगा और नीचे से मार्जिन देगा */
+      text-align: center; /* अंदर के कंटेंट को सेंटर करने के लिए */
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
     .review-card {
@@ -238,69 +248,77 @@
   </style>
 </head>
 <body>
-  <div class="review-card">
-    <!-- Auto-click notification (visual only) -->
-    <div class="auto-click-notice" id="autoClickNotice">
-      <i class="fas fa-mouse-pointer"></i>
-      <span>Expert section पर ऑटो-क्लिक होगा <span id="countdown">2</span> सेकंड में...</span>
-    </div>
-    
-    <!-- main heading -->
-    <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
-
-    <!-- intro paragraph -->
-    <div class="intro-text">
-      <i class="fas fa-shield" style="color: #1b7e74; margin-right: 10px;"></i>
-      Looking for a financial safety net? Honest Loans offers a solution for borrowers with poor credit who need fast access to cash.
+  <div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+    <!-- Ad container - यहाँ एड को सेंटर में रखा गया है -->
+    <div class="ad-container">
+      <div data-mndbanid="6a5e3ffe-a2b1-4265-b752-e959b58039c3"></div>
+      <script async src="https://ss.mrmnd.com/banner.js"></script>
     </div>
 
-    <!-- Expert Take on LendingClub - अब यह क्लिक करने योग्य है -->
-    <div class="expert-take">
-      <div class="expert-header" id="clickable-expert">
-        <i class="fas fa-star-of-life"></i>
-        <h2>Our Expert Take on LendingClub</h2>
+    <div class="review-card">
+      <!-- Auto-click notification (visual only) -->
+      <div class="auto-click-notice" id="autoClickNotice">
+        <i class="fas fa-mouse-pointer"></i>
+        <span>Expert section पर ऑटो-क्लिक होगा <span id="countdown">2</span> सेकंड में...</span>
       </div>
-      <p>While Honest Loans provides the platform to find a lender, we've analyzed the market to find the best overall provider. <strong>LendingClub</strong> stands out due to its combination of borrower-friendly rates and flexible fees.</p>
       
-      <!-- LendingClub key data points -->
-      <div class="lending-stats">
-        <div class="stat-item">
-          <span class="stat-label">Loan Range</span>
-          <span class="stat-value">$1,000 – $50,000</span>
+      <!-- main heading -->
+      <h1>Honest Loans Review: Personal Loans for Bad Credit (Up to $50,000)</h1>
+
+      <!-- intro paragraph -->
+      <div class="intro-text">
+        <i class="fas fa-shield" style="color: #1b7e74; margin-right: 10px;"></i>
+        Looking for a financial safety net? Honest Loans offers a solution for borrowers with poor credit who need fast access to cash.
+      </div>
+
+      <!-- Expert Take on LendingClub - अब यह क्लिक करने योग्य है -->
+      <div class="expert-take">
+        <div class="expert-header" id="clickable-expert">
+          <i class="fas fa-star-of-life"></i>
+          <h2>Our Expert Take on LendingClub</h2>
         </div>
-        <div class="stat-item">
-          <span class="stat-label">Terms</span>
-          <span class="stat-value">24 to 72 months</span>
+        <p>While Honest Loans provides the platform to find a lender, we've analyzed the market to find the best overall provider. <strong>LendingClub</strong> stands out due to its combination of borrower-friendly rates and flexible fees.</p>
+        
+        <!-- LendingClub key data points -->
+        <div class="lending-stats">
+          <div class="stat-item">
+            <span class="stat-label">Loan Range</span>
+            <span class="stat-value">$1,000 – $50,000</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Terms</span>
+            <span class="stat-value">24 to 72 months</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Origination fee</span>
+            <span class="stat-value">0% – 8%</span>
+            <span class="stat-note">depends on credit profile</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Speed</span>
+            <span class="stat-value"><i class="fas fa-clock"></i> 1 business day</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="stat-label">Origination fee</span>
-          <span class="stat-value">0% – 8%</span>
-          <span class="stat-note">depends on credit profile</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Speed</span>
-          <span class="stat-value"><i class="fas fa-clock"></i> 1 business day</span>
+        <!-- extra detail -->
+        <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <span class="fee-highlight"><i class="fas fa-tag"></i>  Origination fee between 0% and 8%</span>
+          <span class="fee-highlight"><i class="fas fa-calendar-check"></i>  Funding in as fast as one business day</span>
         </div>
       </div>
-      <!-- extra detail -->
-      <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-        <span class="fee-highlight"><i class="fas fa-tag"></i>  Origination fee between 0% and 8%</span>
-        <span class="fee-highlight"><i class="fas fa-calendar-check"></i>  Funding in as fast as one business day</span>
+
+      <!-- LendingClub feature line -->
+      <div class="lending-features">
+        <div><i class="fas fa-check-circle"></i> <strong>Loan Range:</strong> $1,000 - $50,000</div>
+        <div><i class="fas fa-check-circle"></i> <strong>Terms:</strong> 24 to 72 months</div>
+        <div><i class="fas fa-check-circle"></i> <strong>Fees:</strong> 0%–8% origination (depends on credit)</div>
       </div>
-    </div>
 
-    <!-- LendingClub feature line -->
-    <div class="lending-features">
-      <div><i class="fas fa-check-circle"></i> <strong>Loan Range:</strong> $1,000 - $50,000</div>
-      <div><i class="fas fa-check-circle"></i> <strong>Terms:</strong> 24 to 72 months</div>
-      <div><i class="fas fa-check-circle"></i> <strong>Fees:</strong> 0%–8% origination (depends on credit)</div>
+      <!-- small footer / disclaimer -->
+      <small class="disclaimer">
+        <i class="fas fa-lock" style="margin-right: 6px;"></i> 
+        Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes as part of a sample review. LendingClub details based on public rates as of 2025.
+      </small>
     </div>
-
-    <!-- small footer / disclaimer -->
-    <small class="disclaimer">
-      <i class="fas fa-lock" style="margin-right: 6px;"></i> 
-      Honest Loans connects borrowers with participating lenders. Not a direct lender. Terms apply. The information presented here is for educational purposes as part of a sample review. LendingClub details based on public rates as of 2025.
-    </small>
   </div>
 
   <!-- Auto-click script: 2 seconds delay then click on Expert section to open link in same tab -->
